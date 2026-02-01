@@ -119,18 +119,29 @@
   <script data-goatcounter="https://bemyvalentine.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
   <script>
-    // Fetch and display visit count from GoatCounter
+    // Fetch and display total visit count from GoatCounter
     function loadVisitCount() {
-      var r = new XMLHttpRequest();
-      r.addEventListener('load', function() {
-        if (r.status === 200) {
-          var data = JSON.parse(r.responseText);
-          var count = data.count_unique || data.count || '0';
-          document.getElementById('visitCount').textContent = count + ' visits';
-        }
-      });
-      r.open('GET', 'https://bemyvalentine.goatcounter.com/counter/' + encodeURIComponent(location.pathname || '/') + '.json');
-      r.send();
+      // Try fetching with the actual pathname first, fallback to /
+      var paths = [location.pathname, '/'];
+      function tryFetch(i) {
+        if (i >= paths.length) return;
+        var r = new XMLHttpRequest();
+        r.addEventListener('load', function() {
+          if (r.status === 200) {
+            try {
+              var data = JSON.parse(r.responseText);
+              var count = data.count || '0';
+              document.getElementById('visitCount').textContent = count + ' visits';
+            } catch(e) { tryFetch(i + 1); }
+          } else {
+            tryFetch(i + 1);
+          }
+        });
+        r.addEventListener('error', function() { tryFetch(i + 1); });
+        r.open('GET', 'https://bemyvalentine.goatcounter.com/counter/' + encodeURIComponent(paths[i]) + '.json');
+        r.send();
+      }
+      tryFetch(0);
     }
     loadVisitCount();
   </script>
