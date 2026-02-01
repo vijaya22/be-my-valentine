@@ -175,6 +175,44 @@ function setupYesButton(data) {
   });
 }
 
+// ===== Message Suggestions =====
+const suggestedMessages = [
+  "Every moment with you feels like a beautiful dream.",
+  "You make my heart skip a beat, every single day.",
+  "Life with you is my favorite adventure.",
+  "You're my today and all of my tomorrows.",
+  "I fall in love with you more and more each day.",
+  "You're the reason I believe in love.",
+  "My heart is, and always will be, yours.",
+  "Being with you is my happiest place.",
+  "You're the best thing that ever happened to me.",
+  "I love you more than words could ever say.",
+  "You had me at hello, and you still do.",
+  "Every love song makes me think of you.",
+];
+
+function setupSuggestions() {
+  const container = document.getElementById('suggestions');
+  const textarea = document.getElementById('customMessage');
+
+  // Show a random subset of 4 suggestions
+  const shuffled = suggestedMessages.sort(() => 0.5 - Math.random());
+  const picked = shuffled.slice(0, 4);
+
+  picked.forEach((msg) => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'suggestion-chip';
+    chip.textContent = msg;
+    chip.addEventListener('click', () => {
+      textarea.value = msg;
+      container.querySelectorAll('.suggestion-chip').forEach((c) => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+    container.appendChild(chip);
+  });
+}
+
 // ===== Theme Picker =====
 function setupThemePicker() {
   const options = document.querySelectorAll('.theme-option');
@@ -266,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Invalid hash, show creator
       setupCreatorForm();
       setupThemePicker();
+      setupSuggestions();
     }
   } else {
     // No hash, show creator page
