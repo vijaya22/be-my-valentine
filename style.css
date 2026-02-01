@@ -192,6 +192,23 @@ body::before {
   color: var(--text-muted);
 }
 
+/* Refresh Button */
+.btn-refresh {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0 4px;
+  vertical-align: middle;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.btn-refresh:hover {
+  color: var(--accent);
+  transform: rotate(180deg);
+}
+
 /* Message Suggestions */
 .suggestions {
   display: flex;

@@ -189,14 +189,35 @@ const suggestedMessages = [
   "I love you more than words could ever say.",
   "You had me at hello, and you still do.",
   "Every love song makes me think of you.",
+  "You are my sun, my moon, and all my stars.",
+  "Loving you is the easiest thing I've ever done.",
+  "With you, I'm home no matter where we are.",
+  "You make the ordinary feel extraordinary.",
+  "I choose you, today and every day after.",
+  "My favorite place in the world is next to you.",
+  "You're the missing piece I never knew I needed.",
+  "Thank you for making my life so beautiful.",
+  "I can't imagine my world without you in it.",
+  "You make me want to be a better person.",
+  "Every day with you is a gift I never take for granted.",
+  "You stole my heart, but I'll let you keep it.",
+  "I love the way you make me smile without even trying.",
+  "You're my favorite notification.",
+  "Distance means nothing when someone means everything.",
+  "I didn't believe in forever until I met you.",
+  "You're the plot twist I never saw coming.",
+  "My love for you grows stronger with each passing day.",
+  "You make my soul happy.",
+  "In a sea of people, my eyes will always search for you.",
 ];
 
-function setupSuggestions() {
+function showSuggestions() {
   const container = document.getElementById('suggestions');
   const textarea = document.getElementById('customMessage');
 
-  // Show a random subset of 4 suggestions
-  const shuffled = suggestedMessages.sort(() => 0.5 - Math.random());
+  container.innerHTML = '';
+
+  const shuffled = [...suggestedMessages].sort(() => 0.5 - Math.random());
   const picked = shuffled.slice(0, 4);
 
   picked.forEach((msg) => {
@@ -210,6 +231,14 @@ function setupSuggestions() {
       chip.classList.add('active');
     });
     container.appendChild(chip);
+  });
+}
+
+function setupSuggestions() {
+  showSuggestions();
+
+  document.getElementById('refreshSuggestions').addEventListener('click', () => {
+    showSuggestions();
   });
 }
 
