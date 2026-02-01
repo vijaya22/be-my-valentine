@@ -250,6 +250,7 @@ function setupThemePicker() {
     option.addEventListener('click', () => {
       options.forEach((o) => o.classList.remove('selected'));
       option.classList.add('selected');
+      document.documentElement.setAttribute('data-theme', option.dataset.theme || 'classic');
     });
   });
 }
