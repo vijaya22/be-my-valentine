@@ -19,30 +19,54 @@
 }
 
 [data-theme="rose"] {
+  --bg-primary: #fdf0f4;
+  --bg-card: #fff8fa;
   --accent: #c97b8b;
   --accent-light: #dda0ad;
   --accent-glow: rgba(201, 123, 139, 0.15);
+  --text-primary: #5a3344;
+  --text-secondary: #8c5a6b;
+  --text-muted: #b8909a;
   --heart-color: #c97b8b;
   --btn-yes-bg: #c97b8b;
   --btn-yes-hover: #b86a7a;
+  --btn-no-bg: #d5c1c8;
+  --border-color: rgba(180, 120, 140, 0.2);
+  --input-bg: #faf2f5;
 }
 
 [data-theme="sunset"] {
+  --bg-primary: #fdf5ee;
+  --bg-card: #fffaf5;
   --accent: #c98a6b;
   --accent-light: #dda98a;
   --accent-glow: rgba(201, 138, 107, 0.15);
+  --text-primary: #5a4433;
+  --text-secondary: #8c6b55;
+  --text-muted: #b89a85;
   --heart-color: #c98a6b;
   --btn-yes-bg: #c98a6b;
   --btn-yes-hover: #b87a5b;
+  --btn-no-bg: #d5cbc1;
+  --border-color: rgba(180, 140, 110, 0.2);
+  --input-bg: #faf5ee;
 }
 
 [data-theme="royal"] {
+  --bg-primary: #f5f0fa;
+  --bg-card: #faf7ff;
   --accent: #9e7bb8;
   --accent-light: #b99ad0;
   --accent-glow: rgba(158, 123, 184, 0.15);
+  --text-primary: #44335a;
+  --text-secondary: #6b558c;
+  --text-muted: #9a85b8;
   --heart-color: #9e7bb8;
   --btn-yes-bg: #9e7bb8;
   --btn-yes-hover: #8d6aa7;
+  --btn-no-bg: #cbc1d5;
+  --border-color: rgba(140, 120, 180, 0.2);
+  --input-bg: #f5f0fa;
 }
 
 /* ===== Reset & Base ===== */
