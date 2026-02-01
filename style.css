@@ -613,6 +613,36 @@ body::before {
   z-index: 10;
 }
 
+/* ===== Buy Me a Coffee ===== */
+.bmc-btn {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 6px 14px;
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
+}
+
+.bmc-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent-light);
+  background: var(--accent-glow);
+}
+
+.bmc-top-right {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+}
+
+.bmc-footer {
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
 /* ===== Footer ===== */
 .footer {
   position: fixed;
