@@ -218,7 +218,7 @@ function showSuggestions() {
   container.innerHTML = '';
 
   const shuffled = [...suggestedMessages].sort(() => 0.5 - Math.random());
-  const picked = shuffled.slice(0, 4);
+  const picked = shuffled.slice(0, 1);
 
   picked.forEach((msg) => {
     const chip = document.createElement('button');

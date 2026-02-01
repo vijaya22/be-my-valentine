@@ -206,21 +206,26 @@ body::before {
 
 /* Refresh Button */
 .btn-refresh {
-  font-family: 'Special Elite', cursive;
-  font-size: 0.75rem;
+  font-size: 1rem;
   background: transparent;
-  border: 1px dashed var(--border-color);
-  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 4px 12px;
-  transition: color 0.3s, border-color 0.3s, background 0.3s;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color 0.3s, border-color 0.3s, background 0.3s, transform 0.3s;
 }
 
 .btn-refresh:hover {
   color: var(--accent);
   border-color: var(--accent-light);
   background: var(--accent-glow);
+  transform: rotate(180deg);
 }
 
 /* Message Suggestions */
