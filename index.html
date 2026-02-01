@@ -112,11 +112,27 @@
   </div>
 
   <footer class="footer">
-    <p>Made with <span class="footer-heart">&hearts;</span> | <a href="./">Create your own</a></p>
+    <p>Made with <span class="footer-heart">&hearts;</span> | <a href="./">Create your own</a> | <span id="visitCount"></span></p>
   </footer>
 
   <script src="script.js"></script>
   <script data-goatcounter="https://bemyvalentine.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+  <script>
+    // Fetch and display visit count from GoatCounter
+    function loadVisitCount() {
+      var r = new XMLHttpRequest();
+      r.addEventListener('load', function() {
+        if (r.status === 200) {
+          var data = JSON.parse(r.responseText);
+          var count = data.count_unique || data.count || '0';
+          document.getElementById('visitCount').textContent = count + ' visits';
+        }
+      });
+      r.open('GET', 'https://bemyvalentine.goatcounter.com/counter/' + encodeURIComponent(location.pathname || '/') + '.json');
+      r.send();
+    }
+    loadVisitCount();
+  </script>
 </body>
 </html>
