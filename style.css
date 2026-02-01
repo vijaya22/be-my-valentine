@@ -192,21 +192,35 @@ body::before {
   color: var(--text-muted);
 }
 
+/* Label Row */
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.label-row label {
+  margin-bottom: 0;
+}
+
 /* Refresh Button */
 .btn-refresh {
-  background: none;
-  border: none;
-  font-size: 1.1rem;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.75rem;
+  background: transparent;
+  border: 1px dashed var(--border-color);
+  border-radius: 16px;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0 4px;
-  vertical-align: middle;
-  transition: color 0.3s, transform 0.3s;
+  padding: 4px 12px;
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
 }
 
 .btn-refresh:hover {
   color: var(--accent);
-  transform: rotate(180deg);
+  border-color: var(--accent-light);
+  background: var(--accent-glow);
 }
 
 /* Message Suggestions */
