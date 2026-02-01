@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Floating hearts background -->
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <!-- ===== CREATOR PAGE ===== -->
+  <div id="creatorPage" class="page">
+    <div class="creator-container">
+      <h1 class="creator-title">Create Your Valentine</h1>
+      <p class="creator-subtitle">Fill in the details below and share the generated link with your special someone</p>
+
+      <form id="creatorForm">
+        <div class="form-group">
+          <label for="senderName">Your Name</label>
+          <input type="text" id="senderName" placeholder="e.g. Vijaya" required maxlength="30">
+        </div>
+
+        <div class="form-group">
+          <label for="receiverName">Their Name</label>
+          <input type="text" id="receiverName" placeholder="e.g. Rahul" required maxlength="30">
+        </div>
+
+        <div class="form-group">
+          <label for="customMessage">Your Message (optional)</label>
+          <textarea id="customMessage" placeholder="e.g. Every moment with you is a treasure..." maxlength="200" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Pick a Theme</label>
+          <div class="theme-picker">
+            <button type="button" class="theme-option selected" data-theme="classic" title="Classic Red">
+              <span class="theme-preview classic"></span>
+              <span class="theme-label">Classic</span>
+            </button>
+            <button type="button" class="theme-option" data-theme="rose" title="Rose Pink">
+              <span class="theme-preview rose"></span>
+              <span class="theme-label">Rose</span>
+            </button>
+            <button type="button" class="theme-option" data-theme="sunset" title="Sunset Orange">
+              <span class="theme-preview sunset"></span>
+              <span class="theme-label">Sunset</span>
+            </button>
+            <button type="button" class="theme-option" data-theme="royal" title="Royal Purple">
+              <span class="theme-preview royal"></span>
+              <span class="theme-label">Royal</span>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-generate">Generate Valentine Link</button>
+      </form>
+
+      <div id="linkResult" class="link-result hidden">
+        <p>Your valentine link is ready!</p>
+        <div class="link-box">
+          <input type="text" id="generatedLink" readonly>
+          <button type="button" id="copyBtn" class="btn-copy">Copy</button>
+        </div>
+        <p class="link-hint">Share this link with your special someone</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VALENTINE PAGE ===== -->
+  <div id="valentinePage" class="page hidden">
+    <div class="valentine-container">
+      <div class="card" id="valentineCard">
+        <div class="card-inner">
+          <div class="card-heart">
+            <svg viewBox="0 0 100 100" class="heart-svg">
+              <path d="M50 88 C25 65, 0 50, 0 30 C0 12, 15 0, 30 0 C40 0, 48 5, 50 15 C52 5, 60 0, 70 0 C85 0, 100 12, 100 30 C100 50, 75 65, 50 88Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h1 class="card-receiver" id="cardReceiver">Dear Someone</h1>
+          <p class="card-question">Will you be my Valentine?</p>
+          <p class="card-message" id="cardMessage"></p>
+          <p class="card-sender" id="cardSender">- Someone</p>
+
+          <div class="card-buttons" id="cardButtons">
+            <button class="btn-yes" id="btnYes">Yes!</button>
+            <button class="btn-no" id="btnNo">No</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- After Yes -->
+      <div id="yesResponse" class="response hidden">
+        <div class="response-content">
+          <div class="big-heart-anim">
+            <svg viewBox="0 0 100 100" class="heart-svg huge-heart">
+              <path d="M50 88 C25 65, 0 50, 0 30 C0 12, 15 0, 30 0 C40 0, 48 5, 50 15 C52 5, 60 0, 70 0 C85 0, 100 12, 100 30 C100 50, 75 65, 50 88Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h2 class="response-title">Yaaay!</h2>
+          <p class="response-text" id="yesText">You just made someone's day!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confetti canvas -->
+    <canvas id="confettiCanvas"></canvas>
+  </div>
+
+  <footer class="footer">
+    <p>Made with <span class="footer-heart">&hearts;</span> | <a href="./">Create your own</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
