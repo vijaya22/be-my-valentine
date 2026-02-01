@@ -310,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // No hash, show creator page
     setupCreatorForm();
     setupThemePicker();
+    setupSuggestions();
   }
 });
 
