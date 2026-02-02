@@ -148,7 +148,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px 80px;
+  padding: 40px 20px 20px;
 }
 
 /* ===== Creator Page ===== */
@@ -645,15 +645,10 @@ body::before {
 
 /* ===== Footer ===== */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   text-align: center;
   padding: 14px;
   font-size: 0.75rem;
   color: var(--text-muted);
-  background: linear-gradient(to top, var(--bg-primary), transparent);
   z-index: 5;
 }
 
@@ -698,6 +693,13 @@ body::before {
   }
 
   .theme-picker {
-    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+
+  .theme-option {
+    flex-shrink: 0;
   }
 }
