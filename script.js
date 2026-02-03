@@ -150,14 +150,53 @@ function setupNoButton() {
   });
 }
 
+// ===== Envelope Animation =====
+function setupEnvelopeAnimation() {
+  const envelope = document.getElementById('envelope');
+  const card = document.getElementById('valentineCard');
+
+  if (!envelope) return;
+
+  // Add hint text
+  const hint = document.createElement('span');
+  hint.className = 'envelope-hint';
+  hint.textContent = 'Tap to open';
+  envelope.appendChild(hint);
+
+  envelope.addEventListener('click', () => {
+    envelope.classList.add('opening');
+
+    setTimeout(() => {
+      card.classList.add('revealed');
+    }, 300);
+
+    setTimeout(() => {
+      envelope.classList.add('opened');
+    }, 900);
+  }, { once: true });
+}
+
 // ===== Yes Button Handler =====
+let cardClone = null;
+
 function setupYesButton(data) {
   const btnYes = document.getElementById('btnYes');
 
   btnYes.addEventListener('click', () => {
+    // Clone the card before hiding it for download later
+    const cardInner = document.querySelector('#valentineCard .card-inner');
+    cardClone = cardInner.cloneNode(true);
+    // Remove buttons from clone
+    const cloneButtons = cardClone.querySelector('.card-buttons');
+    if (cloneButtons) cloneButtons.remove();
+
     // Hide the card
     document.getElementById('valentineCard').classList.add('hidden');
     document.getElementById('cardButtons').classList.add('hidden');
+
+    // Hide envelope wrapper too
+    const envelopeWrapper = document.querySelector('.envelope-wrapper');
+    if (envelopeWrapper) envelopeWrapper.classList.add('hidden');
 
     // Show response
     const response = document.getElementById('yesResponse');
@@ -172,6 +211,37 @@ function setupYesButton(data) {
 
     // Second wave of confetti
     setTimeout(launchConfetti, 1500);
+  });
+}
+
+// ===== Download Card =====
+function setupDownloadButton(data) {
+  const btnDownload = document.getElementById('btnDownload');
+  if (!btnDownload) return;
+
+  btnDownload.addEventListener('click', () => {
+    if (!cardClone) return;
+
+    // Append clone offscreen for rendering
+    const wrapper = document.createElement('div');
+    wrapper.className = 'offscreen-capture';
+    wrapper.style.width = '460px';
+    wrapper.appendChild(cardClone.cloneNode(true));
+    document.body.appendChild(wrapper);
+
+    html2canvas(wrapper, {
+      scale: 2,
+      backgroundColor: null,
+      useCORS: true,
+    }).then((canvas) => {
+      const link = document.createElement('a');
+      const safeName = (data.from || 'valentine').replace(/[^a-zA-Z0-9]/g, '-');
+      link.download = `valentine-from-${safeName}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }).finally(() => {
+      wrapper.remove();
+    });
   });
 }
 
@@ -377,8 +447,10 @@ function showValentine(data) {
   }
 
   // Setup interactions
+  setupEnvelopeAnimation();
   setupNoButton();
   setupYesButton(data);
+  setupDownloadButton(data);
 }
 
 // ===== Init =====
