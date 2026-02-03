@@ -377,7 +377,7 @@ body::before {
 .link-box {
   display: flex;
   gap: 8px;
-  overflow: hidden;
+  flex-wrap: wrap;
 }
 
 .link-box input {
@@ -968,5 +968,14 @@ body::before {
 
   .page {
     padding: 24px 16px 16px;
+  }
+
+  .link-box input {
+    flex: 1 1 100%;
+  }
+
+  .btn-copy,
+  .btn-share {
+    flex: 1;
   }
 }
