@@ -312,7 +312,7 @@ function setupCreatorForm() {
     if (navigator.share) {
       navigator.share({
         title: 'Be My Valentine',
-        text: 'Someone special has a Valentine for you!',
+        text: 'I have a little Valentine\u2019s surprise for you \uD83D\uDC8C',
         url: link,
       }).catch(() => {});
     } else {
