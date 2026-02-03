@@ -280,6 +280,18 @@ function setupCreatorForm() {
 
     document.getElementById('linkResult').classList.remove('hidden');
 
+    // Generate QR code
+    const qrContainer = document.getElementById('qrCode');
+    qrContainer.innerHTML = '';
+    new QRCode(qrContainer, {
+      text: link,
+      width: 160,
+      height: 160,
+      colorDark: '#5a3e3e',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M,
+    });
+
     // Scroll to result
     document.getElementById('linkResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
@@ -292,6 +304,24 @@ function setupCreatorForm() {
       btn.textContent = 'Copied!';
       setTimeout(() => (btn.textContent = 'Copy'), 2000);
     });
+  });
+
+  // Share button
+  document.getElementById('shareBtn').addEventListener('click', () => {
+    const link = document.getElementById('generatedLink').value;
+    if (navigator.share) {
+      navigator.share({
+        title: 'Be My Valentine',
+        text: 'Someone special has a Valentine for you!',
+        url: link,
+      }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(link).then(() => {
+        const btn = document.getElementById('shareBtn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => (btn.textContent = 'Share'), 2000);
+      });
+    }
   });
 }
 

@@ -408,6 +408,38 @@ body::before {
   background: var(--btn-yes-hover);
 }
 
+.btn-share {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Special Elite', cursive;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.btn-share:hover {
+  background: var(--btn-yes-hover);
+}
+
+.qr-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.qr-container canvas,
+.qr-container img {
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  background: #fff;
+}
+
 .link-hint {
   margin-top: 10px;
   font-size: 0.78rem;
