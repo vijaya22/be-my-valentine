@@ -377,6 +377,7 @@ body::before {
 .link-box {
   display: flex;
   gap: 8px;
+  overflow: hidden;
 }
 
 .link-box input {
@@ -402,6 +403,9 @@ body::before {
   transition: background 0.3s;
   white-space: nowrap;
   font-size: 0.9rem;
+  min-width: 72px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .btn-copy:hover {
@@ -420,6 +424,9 @@ body::before {
   transition: background 0.3s;
   white-space: nowrap;
   font-size: 0.9rem;
+  min-width: 72px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .btn-share:hover {
