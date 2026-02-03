@@ -538,8 +538,6 @@ body::before {
 .envelope-wrapper {
   position: relative;
   width: 100%;
-  min-height: 420px;
-  perspective: 800px;
 }
 
 .envelope {
@@ -556,9 +554,9 @@ body::before {
 .envelope-body {
   position: absolute;
   bottom: 0;
-  left: 5%;
-  right: 5%;
-  height: 60%;
+  left: 0;
+  right: 0;
+  top: 40%;
   background: var(--accent);
   border-radius: 0 0 16px 16px;
   box-shadow: 0 4px 20px var(--accent-glow);
@@ -567,18 +565,19 @@ body::before {
 .envelope-flap {
   position: absolute;
   top: 0;
-  left: 5%;
-  right: 5%;
-  height: 50%;
+  left: 0;
+  right: 0;
+  bottom: 50%;
   background: var(--accent-light);
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   transform-origin: top center;
-  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, opacity 0.4s ease;
   z-index: 6;
 }
 
 .envelope.opening .envelope-flap {
-  transform: rotateX(-180deg);
+  transform: scaleY(0);
+  opacity: 0;
 }
 
 .envelope-seal {
@@ -614,24 +613,26 @@ body::before {
 
 .envelope-hint {
   position: absolute;
-  bottom: -32px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--bg-primary);
   animation: hintFade 2s ease-in-out infinite;
   white-space: nowrap;
+  z-index: 8;
 }
 
 @keyframes hintFade {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
 
 .card {
+  position: relative;
   width: 100%;
   opacity: 0;
-  transform: translateY(100px);
+  transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -939,13 +940,26 @@ body::before {
     flex-shrink: 0;
   }
 
-  .envelope-wrapper {
-    min-height: 360px;
-  }
-
   .envelope-seal {
     width: 40px;
     height: 40px;
     font-size: 20px;
+  }
+
+  .envelope-hint {
+    font-size: 0.75rem;
+  }
+
+  .btn-download {
+    padding: 11px 28px;
+    font-size: 0.95rem;
+  }
+
+  .response-title {
+    font-size: 1.8rem;
+  }
+
+  .page {
+    padding: 24px 16px 16px;
   }
 }
