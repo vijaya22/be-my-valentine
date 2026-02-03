@@ -331,6 +331,11 @@ function setupCreatorForm() {
   qrModal.querySelector('.qr-modal-backdrop').addEventListener('click', () => {
     qrModal.classList.add('hidden');
   });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !qrModal.classList.contains('hidden')) {
+      qrModal.classList.add('hidden');
+    }
+  });
 
   // Share button
   document.getElementById('shareBtn').addEventListener('click', () => {
