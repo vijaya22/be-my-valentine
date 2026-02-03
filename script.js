@@ -292,6 +292,18 @@ function setupCreatorForm() {
       correctLevel: QRCode.CorrectLevel.M,
     });
 
+    // Generate large QR for modal preview
+    const qrPreview = document.getElementById('qrPreview');
+    qrPreview.innerHTML = '';
+    new QRCode(qrPreview, {
+      text: link,
+      width: 280,
+      height: 280,
+      colorDark: '#5a3e3e',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M,
+    });
+
     // Scroll to result
     document.getElementById('linkResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
@@ -304,6 +316,20 @@ function setupCreatorForm() {
       btn.textContent = 'Copied!';
       setTimeout(() => (btn.textContent = 'Copy'), 2000);
     });
+  });
+
+  // QR code click → open modal preview
+  document.getElementById('qrCode').addEventListener('click', () => {
+    document.getElementById('qrModal').classList.remove('hidden');
+  });
+
+  // Close modal
+  const qrModal = document.getElementById('qrModal');
+  qrModal.querySelector('.qr-modal-close').addEventListener('click', () => {
+    qrModal.classList.add('hidden');
+  });
+  qrModal.querySelector('.qr-modal-backdrop').addEventListener('click', () => {
+    qrModal.classList.add('hidden');
   });
 
   // Share button

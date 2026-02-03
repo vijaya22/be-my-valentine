@@ -123,6 +123,16 @@
     <p>Made with <span class="footer-heart">&hearts;</span> | <a href="./">Create your own</a> | <a href="https://buymeacoffee.com/vijaya.laxmi" target="_blank" rel="noopener" class="bmc-footer">Buy me a coffee</a> | <span id="visitCount"></span></p>
   </footer>
 
+  <!-- QR Preview Modal -->
+  <div id="qrModal" class="qr-modal hidden" role="dialog">
+    <div class="qr-modal-backdrop"></div>
+    <div class="qr-modal-content">
+      <div id="qrPreview" class="qr-preview"></div>
+      <p class="qr-modal-hint">Scan to open the Valentine</p>
+      <button type="button" class="qr-modal-close">&times;</button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <script src="script.js"></script>
   <script data-goatcounter="https://bemyvalentine.goatcounter.com/count"
