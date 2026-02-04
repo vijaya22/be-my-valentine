@@ -639,13 +639,27 @@ body::before {
   position: relative;
   width: 100%;
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .card.revealed {
   opacity: 1;
-  transform: translateY(0);
+  animation: cardReveal 0.8s ease both;
+}
+
+.card.reveal-done {
+  animation: none;
+  opacity: 1;
 }
 
 .card-inner {

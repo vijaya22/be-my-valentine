@@ -168,6 +168,10 @@ function setupEnvelopeAnimation() {
 
     setTimeout(() => {
       card.classList.add('revealed');
+      // After animation ends, remove transform so fixed-position No button works
+      card.addEventListener('animationend', () => {
+        card.classList.add('reveal-done');
+      }, { once: true });
     }, 300);
 
     setTimeout(() => {
